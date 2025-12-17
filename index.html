@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Mobile App Penetration Testing - Professional iOS and Android Security Assessment by xsayfex">
+    <meta name="author" content="Abdulaziz (xsayfex)">
+    <meta name="keywords"
+        content="mobile pentesting, iOS security, Android security, app security, penetration testing, xsayfex">
+    <title>M0BPWNR | Mobile App Pentester by xsayfex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <div class="scanlines"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><span class="logo-icon">⬡</span><span class="logo-text">M0B<span
+                        class="accent">PWNR</span></span></div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link">HOME</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#methodology" class="nav-link">METHODOLOGY</a></li>
+                <li><a href="#tools" class="nav-link">TOOLS</a></li>
+                <li><a href="#ios" class="nav-link">iOS</a></li>
+                <li><a href="#android" class="nav-link">ANDROID</a></li>
+                <li><a href="#vulns" class="nav-link">VULNS</a></li>
+                <li><a href="#advanced" class="nav-link">ADVANCED</a></li>
+                <li><a href="#frida" class="nav-link">FRIDA</a></li>
+                <li><a href="ip-scanner.html" class="nav-link">IP SCANNER</a></li>
+            </ul>
+            <div class="hamburger"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="terminal-window">
+                <div class="terminal-header"><span class="terminal-btn red"></span><span
+                        class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                        class="terminal-title">xsayfex@mobpwnr:~</span></div>
+                <div class="terminal-body">
+                    <p class="typing-text"><span class="prompt">$</span> <span id="typed-text"></span><span
+                            class="cursor">▌</span></p>
+                </div>
+            </div>
+            <h1 class="glitch" data-text="MOBILE APP PENTESTER">MOBILE APP PENTESTER</h1>
+            <p class="hero-subtitle">iOS & Android Security Assessment</p>
+            <p class="hero-description">Advanced penetration testing methodology to identify critical vulnerabilities in
+                mobile applications. Comprehensive security assessment covering OWASP MASVS, runtime analysis, and
+                exploit development.</p>
+            <div class="author-badge">
+                <span class="author-icon">👤</span>
+                <div class="author-info">
+                    <span class="author-name">Abdulaziz</span>
+                    <span class="author-handle">@xsayfex</span>
+                </div>
+            </div>
+            <div class="hero-buttons">
+                <a href="#methodology" class="btn btn-primary"><span>⚡</span> Start Assessment</a>
+                <a href="#about" class="btn btn-secondary"><span>◉</span> Learn More</a>
+            </div>
+            <div class="stats-bar">
+                <div class="stat-item"><span class="stat-number" data-target="500">0</span>+<span
+                        class="stat-label">Apps Tested</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="3000">0</span>+<span
+                        class="stat-label">Vulns Found</span></div>
+                <div class="stat-item"><span class="stat-number" data-target="100">0</span>%<span
+                        class="stat-label">Success Rate</span></div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="scan-animation"></div>
+                    <div class="vuln-markers"><span class="marker" style="top:20%;left:30%">●</span><span class="marker"
+                            style="top:50%;left:60%">●</span><span class="marker" style="top:75%;left:25%">●</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// ABOUT_MOBILE_PENTESTING</span>
+                <h2 class="section-title">What is <span class="accent">Mobile Pentesting?</span></h2>
+            </div>
+            <div class="about-intro">
+                <p>Mobile Application Penetration Testing is a comprehensive security assessment methodology designed to
+                    identify vulnerabilities in iOS and Android applications before malicious actors can exploit them.
+                    This process involves analyzing the application's architecture, code, data storage, network
+                    communications, and runtime behavior to uncover security weaknesses.</p>
+            </div>
+            <div class="about-grid">
+                <div class="card">
+                    <div class="card-icon">🔐</div>
+                    <h3>Security Assessment</h3>
+                    <p>Systematic evaluation of mobile app security controls including authentication, authorization,
+                        session management, data protection, and cryptographic implementations. We analyze both
+                        client-side and server-side security measures.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Attack Simulation</h3>
+                    <p>Real-world attack simulation using advanced techniques: reverse engineering with IDA Pro/Ghidra,
+                        traffic manipulation via mitmproxy, runtime hooking with Frida, memory forensics, and exploit
+                        chain development.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Risk Evaluation</h3>
+                    <p>Vulnerabilities are classified using CVSS 3.1 scoring system with detailed impact analysis. Each
+                        finding includes exploitation complexity, attack vectors, business impact assessment, and
+                        prioritized remediation guidance.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛡️</div>
+                    <h3>Compliance Framework</h3>
+                    <p>Testing aligned with OWASP MASVS L1/L2/R, MASTG, PCI-DSS 4.0, HIPAA, GDPR, SOC 2, and
+                        industry-specific regulations. Full compliance documentation and attestation reports provided.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚔️</div>
+                    <h3>Exploit Development</h3>
+                    <p>Creation of proof-of-concept exploits demonstrating real-world attack scenarios. This includes
+                        authentication bypasses, data exfiltration, privilege escalation, and business logic abuse
+                        demonstrations.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔬</div>
+                    <h3>Deep Analysis</h3>
+                    <p>In-depth examination of native code (ARM64/ARMv7), obfuscation analysis, anti-tampering bypass,
+                        root/jailbreak detection circumvention, and advanced cryptographic vulnerability assessment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methodology" class="section dark">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// METHODOLOGY</span>
+                <h2 class="section-title">Penetration Testing <span class="accent">Phases</span></h2>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">01</div>
+                    <div class="timeline-content">
+                        <h3>Reconnaissance & Information Gathering</h3>
+                        <p>Comprehensive app store analysis, technology stack fingerprinting, API endpoint enumeration,
+                            third-party SDK identification, certificate analysis, and attack surface mapping.</p>
+                        <ul class="timeline-list">
+                            <li>App store metadata extraction</li>
+                            <li>APK/IPA structure analysis</li>
+                            <li>Firebase/AWS misconfiguration scanning</li>
+                            <li>Domain and subdomain enumeration</li>
+                            <li>API documentation discovery</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">02</div>
+                    <div class="timeline-content">
+                        <h3>Static Analysis (SAST)</h3>
+                        <p>Deep code review without execution: decompilation, disassembly, control flow analysis,
+                            hardcoded secret detection, insecure coding patterns, and vulnerability scanning.</p>
+                        <ul class="timeline-list">
+                            <li>Binary decompilation (JADX, Hopper, IDA)</li>
+                            <li>Source code pattern matching</li>
+                            <li>Cryptographic implementation review</li>
+                            <li>API key and token extraction</li>
+                            <li>Manifest/entitlements analysis</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">03</div>
+                    <div class="timeline-content">
+                        <h3>Dynamic Analysis (DAST)</h3>
+                        <p>Runtime security testing: traffic interception, method tracing, memory inspection, file
+                            system monitoring, and behavior analysis during active use.</p>
+                        <ul class="timeline-list">
+                            <li>SSL/TLS traffic interception</li>
+                            <li>Runtime method hooking (Frida)</li>
+                            <li>Memory dump analysis</li>
+                            <li>Keychain/Keystore inspection</li>
+                            <li>IPC communication monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">04</div>
+                    <div class="timeline-content">
+                        <h3>Exploitation & Validation</h3>
+                        <p>Active exploitation of discovered vulnerabilities with proof-of-concept development, impact
+                            demonstration, and attack chain construction.</p>
+                        <ul class="timeline-list">
+                            <li>Authentication/authorization bypass</li>
+                            <li>Sensitive data exfiltration</li>
+                            <li>Business logic exploitation</li>
+                            <li>Privilege escalation attacks</li>
+                            <li>Persistent access mechanisms</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">05</div>
+                    <div class="timeline-content">
+                        <h3>Reporting & Remediation</h3>
+                        <p>Comprehensive documentation with executive summary, technical findings, reproduction steps,
+                            impact analysis, and detailed remediation recommendations.</p>
+                        <ul class="timeline-list">
+                            <li>CVSS 3.1 severity scoring</li>
+                            <li>Step-by-step PoC documentation</li>
+                            <li>Remediation code examples</li>
+                            <li>Risk prioritization matrix</li>
+                            <li>Retest verification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="tools" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// ARSENAL</span>
+                <h2 class="section-title">Professional <span class="accent">Toolkit</span></h2>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">F</div>
+                    <h3>Frida</h3>
+                    <p>Dynamic instrumentation toolkit for runtime manipulation, method hooking, and JavaScript
+                        injection on iOS/Android.</p><span class="tool-tag">Dynamic Analysis</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">B</div>
+                    <h3>Burp Suite Pro</h3>
+                    <p>Industry-standard proxy for MITM attacks, traffic interception, automated scanning, and API
+                        security testing.</p><span class="tool-tag">Network Analysis</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">O</div>
+                    <h3>Objection</h3>
+                    <p>Runtime mobile exploration toolkit built on Frida. SSL pinning bypass, jailbreak detection
+                        bypass, and memory dumping.</p><span class="tool-tag">Runtime Bypass</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">J</div>
+                    <h3>JADX</h3>
+                    <p>Advanced Android DEX to Java decompiler with GUI support. Full source code reconstruction and
+                        dependency analysis.</p><span class="tool-tag">Decompilation</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">A</div>
+                    <h3>APKTool</h3>
+                    <p>Android APK reverse engineering for smali code editing, resource extraction, and repackaging with
+                        modifications.</p><span class="tool-tag">Reverse Engineering</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">I</div>
+                    <h3>IDA Pro / Ghidra</h3>
+                    <p>Professional disassemblers for ARM/ARM64 binary analysis. Essential for native library reverse
+                        engineering.</p><span class="tool-tag">Binary Analysis</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">M</div>
+                    <h3>MobSF</h3>
+                    <p>All-in-one mobile security testing framework. Automated static, dynamic, and malware analysis
+                        capabilities.</p><span class="tool-tag">Automated Scanning</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">D</div>
+                    <h3>Drozer</h3>
+                    <p>Android security assessment framework for IPC testing, content provider exploitation, and attack
+                        surface analysis.</p><span class="tool-tag">Android Security</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">R</div>
+                    <h3>radare2 / r2frida</h3>
+                    <p>Open-source reverse engineering framework with Frida integration for advanced binary analysis and
+                        exploitation.</p><span class="tool-tag">Advanced RE</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">C</div>
+                    <h3>class-dump / dsdump</h3>
+                    <p>Objective-C runtime introspection tools for extracting class interfaces from iOS Mach-O binaries.
+                    </p><span class="tool-tag">iOS Analysis</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">N</div>
+                    <h3>Nuclei</h3>
+                    <p>Fast vulnerability scanner with mobile-specific templates for API security testing and
+                        misconfiguration detection.</p><span class="tool-tag">Vulnerability Scanning</span>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">S</div>
+                    <h3>SQLite Browser</h3>
+                    <p>Database analysis tool for examining local SQLite databases extracted from mobile applications.
+                    </p><span class="tool-tag">Data Analysis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ios" class="section dark">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// iOS_PENTESTING</span>
+                <h2 class="section-title"> iOS Security <span class="accent">Assessment</span></h2>
+            </div>
+            <div class="platform-grid">
+                <div class="platform-info">
+                    <div class="info-block">
+                        <h3>⚙️ Environment Setup</h3>
+                        <ul>
+                            <li><strong>Jailbroken Device:</strong> Checkra1n, Unc0ver, Palera1n, Dopamine</li>
+                            <li><strong>Package Managers:</strong> Cydia, Sileo, Zebra</li>
+                            <li><strong>Essential Tweaks:</strong> SSL Kill Switch 2, Liberty Lite, FLEXing</li>
+                            <li><strong>Frida Server:</strong> via apt-get or manual installation</li>
+                            <li><strong>macOS Tools:</strong> Xcode, otool, codesign, ldid</li>
+                            <li><strong>SSH Access:</strong> OpenSSH + USB tunneling via iproxy</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🔍 Analysis Techniques</h3>
+                        <ul>
+                            <li><strong>Binary Analysis:</strong> class-dump, otool -L, nm, strings, Hopper, IDA Pro
+                            </li>
+                            <li><strong>Data Storage:</strong> Keychain (keychain-dumper), NSUserDefaults, SQLite, Core
+                                Data, Plist files</li>
+                            <li><strong>Network Security:</strong> ATS configuration, certificate pinning
+                                implementation, TLS version</li>
+                            <li><strong>Cryptography:</strong> CommonCrypto, CryptoKit, SecKey operations</li>
+                            <li><strong>Runtime:</strong> Method swizzling, Frida hooks, Cycript injection</li>
+                            <li><strong>IPC:</strong> URL schemes, Universal Links, App Extensions, XPC</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🎯 Common Vulnerabilities</h3>
+                        <ul>
+                            <li>Insecure Keychain access controls (kSecAttrAccessible)</li>
+                            <li>Jailbreak detection bypass (multiple detection methods)</li>
+                            <li>URL scheme hijacking and deep link exploitation</li>
+                            <li>Pasteboard/UIPasteboard sensitive data leakage</li>
+                            <li>iTunes backup extraction (unencrypted backups)</li>
+                            <li>Biometric (Touch ID/Face ID) authentication bypass</li>
+                            <li>WebView JavaScript bridge vulnerabilities</li>
+                            <li>Hardcoded secrets in Mach-O binaries</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">iOS Pentesting Commands</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment"># Connect to jailbroken device via USB</span>
+$ iproxy 2222 22 &
+$ ssh root@localhost -p 2222
+
+<span class="comment"># Extract decrypted IPA from device</span>
+$ frida-ios-dump -l  <span class="comment"># List apps</span>
+$ frida-ios-dump "Target App"
+
+<span class="comment"># Dump Objective-C class headers</span>
+$ class-dump -H AppBinary -o headers/
+$ dsdump --objc AppBinary
+
+<span class="comment"># Analyze binary dependencies</span>
+$ otool -L AppBinary
+$ nm -u AppBinary | grep -i ssl
+
+<span class="comment"># Extract strings and secrets</span>
+$ strings AppBinary | grep -iE "api|key|secret|token|password"
+$ rabin2 -zz AppBinary | grep -i http
+
+<span class="comment"># Frida runtime hooking</span>
+$ frida -U -f com.target.app -l bypass.js --no-pause
+$ frida-trace -U -f com.app -m "*[* *password*]"
+
+<span class="comment"># Keychain dump</span>
+$ keychain-dumper -a
+
+<span class="comment"># SSL pinning bypass with Objection</span>
+$ objection -g "Target App" explore
+... ios sslpinning disable
+... ios keychain dump
+... ios nsuserdefaults get
+
+<span class="comment"># Analyze Info.plist</span>
+$ plutil -p Info.plist
+$ grep -i "ats\|url\|scheme" Info.plist</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="android" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// ANDROID_PENTESTING</span>
+                <h2 class="section-title">🤖 Android Security <span class="accent">Assessment</span></h2>
+            </div>
+            <div class="platform-grid reverse">
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">Android Pentesting Commands</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment"># Decompile APK to smali and resources</span>
+$ apktool d target.apk -o output/
+$ apktool d target.apk -r  <span class="comment"># Skip resources</span>
+
+<span class="comment"># Decompile to Java source code</span>
+$ jadx -d decompiled/ target.apk
+$ jadx --deobf target.apk  <span class="comment"># With deobfuscation</span>
+
+<span class="comment"># Analyze AndroidManifest.xml</span>
+$ aapt dump xmltree target.apk AndroidManifest.xml
+$ aapt dump permissions target.apk
+
+<span class="comment"># Find hardcoded secrets</span>
+$ grep -rn "api_key\|secret\|password\|token" decompiled/
+$ grep -rn "-----BEGIN" decompiled/  <span class="comment"># Private keys</span>
+
+<span class="comment"># ADB commands for testing</span>
+$ adb devices
+$ adb shell pm list packages | grep target
+$ adb shell run-as com.target.app
+$ adb shell "cat /data/data/com.app/shared_prefs/*.xml"
+
+<span class="comment"># Install Frida server on rooted device</span>
+$ adb push frida-server /data/local/tmp/
+$ adb shell "chmod 755 /data/local/tmp/frida-server"
+$ adb shell "/data/local/tmp/frida-server &"
+
+<span class="comment"># Frida hooking</span>
+$ frida -U -f com.target.app -l hook.js --no-pause
+$ frida-ps -Ua  <span class="comment"># List running apps</span>
+
+<span class="comment"># SSL pinning bypass</span>
+$ objection -g com.target.app explore
+... android sslpinning disable
+... android root disable
+
+<span class="comment"># Drozer for component testing</span>
+$ drozer console connect
+dz> run app.package.attacksurface com.target.app
+dz> run app.activity.start --component com.app .ExportedActivity
+dz> run scanner.provider.finduris -a com.target.app</code></pre>
+                    </div>
+                </div>
+                <div class="platform-info">
+                    <div class="info-block">
+                        <h3>⚙️ Environment Setup</h3>
+                        <ul>
+                            <li><strong>Rooted Device:</strong> Magisk, KernelSU, or rooted emulator</li>
+                            <li><strong>Emulator:</strong> Genymotion, Android Studio AVD with root</li>
+                            <li><strong>ADB:</strong> Android Debug Bridge from SDK Platform-Tools</li>
+                            <li><strong>Frida:</strong> frida-server matching device architecture (arm64/arm/x86)</li>
+                            <li><strong>Proxy:</strong> Burp Suite with CA certificate installed as system cert</li>
+                            <li><strong>Tools:</strong> JADX-GUI, APKTool, dex2jar, jd-gui</li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🔍 Analysis Techniques</h3>
+                        <ul>
+                            <li><strong>Components:</strong> Activities, Services, Broadcast Receivers, Content
+                                Providers</li>
+                            <li><strong>Data Storage:</strong> SharedPreferences, SQLite, Internal/External Storage,
+                                AccountManager</li>
+                            <li><strong>IPC:</strong> Intent analysis, PendingIntent vulnerabilities, Bound Services
+                            </li>
+                            <li><strong>Network:</strong> Network Security Config (NSC), certificate validation, proxy
+                                detection</li>
+                            <li><strong>Native:</strong> JNI analysis, .so library reverse engineering with IDA/Ghidra
+                            </li>
+                            <li><strong>Crypto:</strong> KeyStore, EncryptedSharedPreferences, custom implementations
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="info-block">
+                        <h3>🎯 Common Vulnerabilities</h3>
+                        <ul>
+                            <li>Exported component abuse (android:exported="true")</li>
+                            <li>Insecure Content Provider queries (SQL injection)</li>
+                            <li>Intent redirection and deep link hijacking</li>
+                            <li>WebView JavaScript interface exploitation (addJavascriptInterface)</li>
+                            <li>Insecure data storage on SD card (world-readable)</li>
+                            <li>Broadcast receiver spoofing attacks</li>
+                            <li>Pending Intent mutable flags exploitation</li>
+                            <li>Backup flag enabled (android:allowBackup="true")</li>
+                            <li>Debug mode in production (android:debuggable="true")</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vulns" class="section dark">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// OWASP_MOBILE_TOP_10_2024</span>
+                <h2 class="section-title">Mobile <span class="accent">Vulnerabilities</span></h2>
+            </div>
+            <div class="vulns-intro">
+                <p>The OWASP Mobile Top 10 represents the most critical security risks in mobile applications. Each
+                    vulnerability category is based on real-world data and security research, providing a standardized
+                    framework for mobile application security assessment.</p>
+            </div>
+            <div class="vulns-grid">
+                <div class="vuln-card critical">
+                    <div class="vuln-header"><span class="vuln-num">M1</span><span
+                            class="badge critical">CRITICAL</span></div>
+                    <h3>Improper Credential Usage</h3>
+                    <p>Hardcoded API keys, tokens, passwords exposed in binary. Credentials stored in code,
+                        configuration files, or accessible storage. <strong>Impact:</strong> Full API access, account
+                        takeover, data breach.</p>
+                </div>
+                <div class="vuln-card critical">
+                    <div class="vuln-header"><span class="vuln-num">M2</span><span
+                            class="badge critical">CRITICAL</span></div>
+                    <h3>Inadequate Supply Chain Security</h3>
+                    <p>Vulnerable third-party libraries, malicious SDKs, compromised dependencies.
+                        <strong>Impact:</strong> Remote code execution, data exfiltration, backdoor access.
+                    </p>
+                </div>
+                <div class="vuln-card high">
+                    <div class="vuln-header"><span class="vuln-num">M3</span><span class="badge high">HIGH</span></div>
+                    <h3>Insecure Authentication/Authorization</h3>
+                    <p>Weak authentication mechanisms, broken session management, improper access controls, missing MFA.
+                        <strong>Impact:</strong> Privilege escalation, unauthorized access.
+                    </p>
+                </div>
+                <div class="vuln-card high">
+                    <div class="vuln-header"><span class="vuln-num">M4</span><span class="badge high">HIGH</span></div>
+                    <h3>Insufficient Input/Output Validation</h3>
+                    <p>SQL injection, XSS, command injection, path traversal, LDAP injection in mobile context.
+                        <strong>Impact:</strong> Data manipulation, code execution.
+                    </p>
+                </div>
+                <div class="vuln-card high">
+                    <div class="vuln-header"><span class="vuln-num">M5</span><span class="badge high">HIGH</span></div>
+                    <h3>Insecure Communication</h3>
+                    <p>Missing TLS, improper certificate validation, weak cipher suites, no certificate pinning.
+                        <strong>Impact:</strong> MITM attacks, credential theft.
+                    </p>
+                </div>
+                <div class="vuln-card medium">
+                    <div class="vuln-header"><span class="vuln-num">M6</span><span class="badge medium">MEDIUM</span>
+                    </div>
+                    <h3>Inadequate Privacy Controls</h3>
+                    <p>Excessive permissions, PII exposure, analytics over-collection, location tracking.
+                        <strong>Impact:</strong> Privacy violation, regulatory fines.
+                    </p>
+                </div>
+                <div class="vuln-card medium">
+                    <div class="vuln-header"><span class="vuln-num">M7</span><span class="badge medium">MEDIUM</span>
+                    </div>
+                    <h3>Insufficient Binary Protections</h3>
+                    <p>Missing obfuscation, no anti-tampering, absent anti-debugging, code signing bypass.
+                        <strong>Impact:</strong> Reverse engineering, piracy.
+                    </p>
+                </div>
+                <div class="vuln-card medium">
+                    <div class="vuln-header"><span class="vuln-num">M8</span><span class="badge medium">MEDIUM</span>
+                    </div>
+                    <h3>Security Misconfiguration</h3>
+                    <p>Debug mode enabled, excessive permissions, insecure defaults, exposed services.
+                        <strong>Impact:</strong> Information disclosure, attack surface.
+                    </p>
+                </div>
+                <div class="vuln-card low">
+                    <div class="vuln-header"><span class="vuln-num">M9</span><span class="badge low">LOW</span></div>
+                    <h3>Insecure Data Storage</h3>
+                    <p>Sensitive data in SharedPrefs/NSUserDefaults, unencrypted SQLite, world-readable files.
+                        <strong>Impact:</strong> Data theft on compromised devices.
+                    </p>
+                </div>
+                <div class="vuln-card low">
+                    <div class="vuln-header"><span class="vuln-num">M10</span><span class="badge low">LOW</span></div>
+                    <h3>Insufficient Cryptography</h3>
+                    <p>Weak algorithms (MD5/SHA1), hardcoded keys, improper IV usage, custom crypto.
+                        <strong>Impact:</strong> Data decryption, integrity bypass.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="advanced" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// ADVANCED_TECHNIQUES</span>
+                <h2 class="section-title">Advanced <span class="accent">Attack Vectors</span></h2>
+            </div>
+            <div class="advanced-grid">
+                <div class="advanced-card">
+                    <h3>🔓 Authentication Bypass</h3>
+                    <ul>
+                        <li>Biometric authentication bypass via Frida hooks</li>
+                        <li>Local authentication flag manipulation</li>
+                        <li>JWT token forgery and signature bypass</li>
+                        <li>OAuth 2.0 redirect URI manipulation</li>
+                        <li>Session fixation and hijacking</li>
+                        <li>Race condition exploitation in auth flows</li>
+                    </ul>
+                </div>
+                <div class="advanced-card">
+                    <h3>🔐 Cryptographic Attacks</h3>
+                    <ul>
+                        <li>Keychain/Keystore extraction techniques</li>
+                        <li>Hardcoded symmetric key extraction</li>
+                        <li>Weak PRNG exploitation</li>
+                        <li>Padding oracle attacks</li>
+                        <li>IV reuse vulnerabilities</li>
+                        <li>Key derivation function weaknesses</li>
+                    </ul>
+                </div>
+                <div class="advanced-card">
+                    <h3>📡 Network Attacks</h3>
+                    <ul>
+                        <li>Certificate pinning bypass (multiple techniques)</li>
+                        <li>Custom root CA injection</li>
+                        <li>WebSocket interception and manipulation</li>
+                        <li>GraphQL introspection and exploitation</li>
+                        <li>gRPC/Protobuf traffic analysis</li>
+                        <li>mTLS certificate extraction</li>
+                    </ul>
+                </div>
+                <div class="advanced-card">
+                    <h3>💉 Code Injection</h3>
+                    <ul>
+                        <li>Dynamic library injection (iOS/Android)</li>
+                        <li>Frida gadget embedding</li>
+                        <li>Smali code patching</li>
+                        <li>Objective-C method swizzling</li>
+                        <li>Native code hooking (PLT/GOT)</li>
+                        <li>JavaScript bridge exploitation</li>
+                    </ul>
+                </div>
+                <div class="advanced-card">
+                    <h3>🛡️ Protection Bypass</h3>
+                    <ul>
+                        <li>Root/Jailbreak detection bypass</li>
+                        <li>Emulator detection bypass</li>
+                        <li>Anti-debugging circumvention</li>
+                        <li>Anti-tampering defeat</li>
+                        <li>SafetyNet/Play Integrity bypass</li>
+                        <li>Code obfuscation reversal</li>
+                    </ul>
+                </div>
+                <div class="advanced-card">
+                    <h3>📱 Platform-Specific</h3>
+                    <ul>
+                        <li>iOS sandbox escape techniques</li>
+                        <li>Android SELinux bypass</li>
+                        <li>IPC/XPC exploitation</li>
+                        <li>Content Provider SQL injection</li>
+                        <li>Deep link/Universal link hijacking</li>
+                        <li>Clipboard data interception</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="frida" class="section dark">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// FRIDA_SCRIPTS</span>
+                <h2 class="section-title">Frida <span class="accent">Code Examples</span></h2>
+            </div>
+            <div class="frida-grid">
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">iOS SSL Pinning Bypass</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment">// iOS SSL Pinning Bypass Script</span>
+<span class="keyword">var</span> resolver = <span class="keyword">new</span> ApiResolver(<span class="string">'objc'</span>);
+
+resolver.enumerateMatches(<span class="string">'*[* URLSession:*:didReceiveChallenge:*]'</span>, {
+    onMatch: <span class="keyword">function</span>(match) {
+        Interceptor.attach(match.address, {
+            onEnter: <span class="keyword">function</span>(args) {
+                <span class="keyword">var</span> dominated = ObjC.Object(args[4]);
+                dominated.invoke(<span class="string">'useCredential:forChallenge:'</span>, 
+                    ObjC.classes.NSURLCredential
+                        .credentialForTrust_(args[3]), args[3]);
+            }
+        });
+    }
+});
+console.log(<span class="string">"[+] SSL Pinning Bypassed!"</span>);</code></pre>
+                    </div>
+                </div>
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">Android Root Detection Bypass</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment">// Android Root Detection Bypass</span>
+Java.perform(<span class="keyword">function</span>() {
+    <span class="keyword">var</span> RootBeer = Java.use(<span class="string">'com.scottyab.rootbeer.RootBeer'</span>);
+    
+    RootBeer.isRooted.implementation = <span class="keyword">function</span>() {
+        console.log(<span class="string">"[+] isRooted() bypassed"</span>);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    };
+    
+    RootBeer.isRootedWithoutBusyBoxCheck.implementation = <span class="keyword">function</span>() {
+        console.log(<span class="string">"[+] BusyBox check bypassed"</span>);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    };
+    
+    <span class="comment">// Bypass native su binary check</span>
+    <span class="keyword">var</span> File = Java.use(<span class="string">'java.io.File'</span>);
+    File.exists.implementation = <span class="keyword">function</span>() {
+        <span class="keyword">if</span> (<span class="keyword">this</span>.getPath().indexOf(<span class="string">"su"</span>) !== -1) {
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+        <span class="keyword">return</span> <span class="keyword">this</span>.exists.call(<span class="keyword">this</span>);
+    };
+});</code></pre>
+                    </div>
+                </div>
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">Keychain Extraction (iOS)</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment">// iOS Keychain Extraction Script</span>
+<span class="keyword">var</span> SecItemCopyMatching = <span class="keyword">new</span> NativeFunction(
+    Module.findExportByName(<span class="string">'Security'</span>, <span class="string">'SecItemCopyMatching'</span>),
+    <span class="string">'int'</span>, [<span class="string">'pointer'</span>, <span class="string">'pointer'</span>]
+);
+
+Interceptor.attach(SecItemCopyMatching, {
+    onEnter: <span class="keyword">function</span>(args) {
+        <span class="keyword">this</span>.query = <span class="keyword">new</span> ObjC.Object(args[0]);
+        <span class="keyword">this</span>.result = args[1];
+    },
+    onLeave: <span class="keyword">function</span>(retval) {
+        <span class="keyword">if</span> (retval == 0) {
+            <span class="keyword">var</span> data = <span class="keyword">new</span> ObjC.Object(<span class="keyword">this</span>.result.readPointer());
+            console.log(<span class="string">"[KEYCHAIN] "</span> + data.toString());
+        }
+    }
+});</code></pre>
+                    </div>
+                </div>
+                <div class="code-terminal">
+                    <div class="terminal-header"><span class="terminal-btn red"></span><span
+                            class="terminal-btn yellow"></span><span class="terminal-btn green"></span><span
+                            class="terminal-title">API Traffic Logger</span></div>
+                    <div class="terminal-body">
+                        <pre><code><span class="comment">// Android HTTP Traffic Logger</span>
+Java.perform(<span class="keyword">function</span>() {
+    <span class="keyword">var</span> OkHttpClient = Java.use(<span class="string">'okhttp3.OkHttpClient'</span>);
+    <span class="keyword">var</span> Buffer = Java.use(<span class="string">'okio.Buffer'</span>);
+    
+    OkHttpClient.newCall.implementation = <span class="keyword">function</span>(request) {
+        <span class="keyword">var</span> url = request.url().toString();
+        <span class="keyword">var</span> method = request.method();
+        <span class="keyword">var</span> headers = request.headers().toString();
+        
+        console.log(<span class="string">"\\n[REQUEST] "</span> + method + <span class="string">" "</span> + url);
+        console.log(<span class="string">"[HEADERS]\\n"</span> + headers);
+        
+        <span class="keyword">var</span> body = request.body();
+        <span class="keyword">if</span> (body !== <span class="keyword">null</span>) {
+            <span class="keyword">var</span> buffer = Buffer.$new();
+            body.writeTo(buffer);
+            console.log(<span class="string">"[BODY] "</span> + buffer.readUtf8());
+        }
+        
+        <span class="keyword">return</span> <span class="keyword">this</span>.newCall(request);
+    };
+});</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="checklist" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// SECURITY_CHECKLIST</span>
+                <h2 class="section-title">Comprehensive <span class="accent">Testing Checklist</span></h2>
+            </div>
+            <div class="checklist-grid">
+                <div class="checklist-cat">
+                    <h3>📱 Data Storage Security</h3>
+                    <ul>
+                        <li>☐ Sensitive data in local storage (SharedPrefs/NSUserDefaults)</li>
+                        <li>☐ Credential encryption at rest</li>
+                        <li>☐ SQLite database encryption</li>
+                        <li>☐ Backup/export mechanisms</li>
+                        <li>☐ Clipboard/pasteboard handling</li>
+                        <li>☐ Keyboard cache and autocomplete</li>
+                        <li>☐ Screenshot prevention</li>
+                        <li>☐ Third-party keyboard restrictions</li>
+                    </ul>
+                </div>
+                <div class="checklist-cat">
+                    <h3>🔐 Authentication & Session</h3>
+                    <ul>
+                        <li>☐ Biometric authentication bypass</li>
+                        <li>☐ Session token entropy and expiration</li>
+                        <li>☐ Brute-force and rate limiting</li>
+                        <li>☐ OAuth 2.0/OIDC implementation</li>
+                        <li>☐ Logout and session invalidation</li>
+                        <li>☐ Multi-device session management</li>
+                        <li>☐ Remember me functionality</li>
+                        <li>☐ Account lockout mechanisms</li>
+                    </ul>
+                </div>
+                <div class="checklist-cat">
+                    <h3>🌐 Network Security</h3>
+                    <ul>
+                        <li>☐ Certificate pinning implementation</li>
+                        <li>☐ TLS version and cipher suites</li>
+                        <li>☐ Sensitive data in transit</li>
+                        <li>☐ WebSocket security</li>
+                        <li>☐ API authentication mechanisms</li>
+                        <li>☐ Certificate validation</li>
+                        <li>☐ Proxy detection bypass</li>
+                        <li>☐ DNS security</li>
+                    </ul>
+                </div>
+                <div class="checklist-cat">
+                    <h3>⚙️ Platform Security</h3>
+                    <ul>
+                        <li>☐ Root/Jailbreak detection</li>
+                        <li>☐ IPC security (Intents/URL schemes)</li>
+                        <li>☐ WebView configuration</li>
+                        <li>☐ Permission analysis</li>
+                        <li>☐ Anti-tampering controls</li>
+                        <li>☐ Emulator/debugger detection</li>
+                        <li>☐ Code obfuscation</li>
+                        <li>☐ Binary protections</li>
+                    </ul>
+                </div>
+                <div class="checklist-cat">
+                    <h3>💻 Code Quality & Secrets</h3>
+                    <ul>
+                        <li>☐ Hardcoded secrets and API keys</li>
+                        <li>☐ Third-party library vulnerabilities</li>
+                        <li>☐ Debug code and logging</li>
+                        <li>☐ Obfuscation effectiveness</li>
+                        <li>☐ Cryptographic implementations</li>
+                        <li>☐ Error handling and disclosure</li>
+                        <li>☐ Memory management</li>
+                        <li>☐ Input validation</li>
+                    </ul>
+                </div>
+                <div class="checklist-cat">
+                    <h3>🎭 Business Logic</h3>
+                    <ul>
+                        <li>☐ Transaction manipulation</li>
+                        <li>☐ Race condition exploitation</li>
+                        <li>☐ Privilege escalation</li>
+                        <li>☐ Referral/reward abuse</li>
+                        <li>☐ In-app purchase bypass</li>
+                        <li>☐ Feature flag manipulation</li>
+                        <li>☐ API rate limiting bypass</li>
+                        <li>☐ Time-based attack vectors</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="section dark">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// RESOURCES</span>
+                <h2 class="section-title">Learning <span class="accent">Resources</span></h2>
+            </div>
+            <div class="resources-grid">
+                <a href="https://mas.owasp.org/" target="_blank" class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>OWASP MAS Project</h3>
+                    <p>Mobile Application Security project including MASVS and MASTG for comprehensive testing guidance.
+                    </p>
+                </a>
+                <a href="https://frida.re/docs/home/" target="_blank" class="resource-card">
+                    <div class="resource-icon">🔧</div>
+                    <h3>Frida Documentation</h3>
+                    <p>Official documentation for the dynamic instrumentation toolkit used in mobile pentesting.</p>
+                </a>
+                <a href="https://github.com/OWASP/owasp-mastg" target="_blank" class="resource-card">
+                    <div class="resource-icon">💻</div>
+                    <h3>MASTG GitHub</h3>
+                    <p>Mobile Application Security Testing Guide with practical testing procedures and examples.</p>
+                </a>
+                <a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank"
+                    class="resource-card">
+                    <div class="resource-icon">🛡️</div>
+                    <h3>MobSF Framework</h3>
+                    <p>All-in-one automated mobile security testing framework for static and dynamic analysis.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-logo"><span class="logo-icon">⬡</span><span class="logo-text">M0B<span
+                                class="accent">PWNR</span></span></div>
+                    <p class="footer-description">Professional Mobile Application Penetration Testing Resource.
+                        Comprehensive methodology for iOS and Android security assessment.</p>
+                    <div class="footer-author">
+                        <span class="author-label">Created by</span>
+                        <div class="author-details">
+                            <span class="author-name-lg">Abdulaziz</span>
+                            <span class="author-handle-lg">@xsayfex</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#methodology">Methodology</a></li>
+                        <li><a href="#tools">Tools Arsenal</a></li>
+                        <li><a href="#ios">iOS Testing</a></li>
+                        <li><a href="#android">Android Testing</a></li>
+                        <li><a href="#vulns">Vulnerabilities</a></li>
+                        <li><a href="#frida">Frida Scripts</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://mas.owasp.org/" target="_blank">OWASP MAS</a></li>
+                        <li><a href="https://frida.re" target="_blank">Frida</a></li>
+                        <li><a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank">MobSF</a>
+                        </li>
+                        <li><a href="https://github.com/sensepost/objection" target="_blank">Objection</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 M0BPWNR. All rights reserved. | Developed by <span class="accent">Abdulaziz
+                        (xsayfex)</span></p>
+                <div class="social-links">
+                    <a href="https://github.com/xsayfex" target="_blank" class="social-link">GitHub</a>
+                    <a href="https://twitter.com/xsayfex" target="_blank" class="social-link">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="sci.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
