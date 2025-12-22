@@ -133,6 +133,26 @@ function animateStats() {
     });
 }
 
+//audo auto paly
+
+
+// Auto-play background music
+window.addEventListener('DOMContentLoaded', () => {
+    const music = document.getElementById('bgMusic');
+    if (music) {
+        music.volume = 0.3; // Set gentle volume
+
+        // Try to auto-play
+        music.play().catch(() => {
+            // If auto-play is blocked, play on first user interaction
+            document.addEventListener('click', () => {
+                music.play();
+            }, { once: true });
+        });
+    }
+});
+
+
 // Intersection Observer for Stats Animation
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
